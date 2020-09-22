@@ -30,4 +30,19 @@ describe('app routes', () => {
     expect(response.text)
         .toEqual(`<html><body><h1>blue</h1></body></html>`)
     });
+    it('returns red html', async () => {
+        const response = await request(app)
+            .get('/red');
+
+    expect(response.text)
+        .toEqual(`<html><body><h1>red</h1></body></html>`)
+    });
+    it('returns echo html', async () => {
+        const response = await request(app)
+            .post('/echo')
+            .send('hello')
+
+    expect(response.text)
+        .toEqual('hello')
+    });
 });
